@@ -8,7 +8,7 @@
   
   "type": "module",
   
-  "homepage": "https://andro-saj.github.io/LeandroSouzaRibeiro",
+  "homepage": "https://andro-saj.github.io/extra",
   
   "scripts": {
   
@@ -25,10 +25,9 @@
   "preview": "vite preview",
   
     
-  "predeploy": "npm run build",
-  
-    
-  "deploy": "gh-pages -d dist"
+ "predeploy": "npm run build",
+
+ "deploy": "gh-pages -d dist"
   
   },
   
