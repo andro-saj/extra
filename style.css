@@ -1,12 +1,14 @@
 /* ================= VARIÁVEIS GLOBAIS ================= */
-body, h1, h2, h3, h4, h5, h6, p, a {
-    font-family: 'Montserrat', sans-serif;
-}
-
 :root {
     --main-color: #18b5ca;
     --text-color: #333;
     --bg-color: #ffffff;
+    --spacing: 16px;
+    --radius: 10px;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a {
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* ================= RESET ================= */
@@ -14,6 +16,19 @@ body, h1, h2, h3, h4, h5, h6, p, a {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* ================= CONTAINER PADRÃO ================= */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing);
 }
 
 /* ================= HEADER ================= */
@@ -27,17 +42,13 @@ header {
     background-size: cover;
     background-position: center;
     padding: 20px 40px;
-    position: relative;
 }
 
 header h1 {
-    font-family: 'Montserrat', sans-serif;
     color: var(--main-color);
     text-transform: uppercase;
     font-size: 1.8em;
-    margin: 0;
-    z-index: 1;
-    text-shadow: 1px 1px 1px #040404;
+    text-shadow: 1px 1px 2px #000;
 }
 
 /* ================= NAV ================= */
@@ -51,7 +62,6 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
-    padding-right: 135px;
 }
 
 nav ul li a {
@@ -59,20 +69,20 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
     padding: 8px 12px;
+    border-radius: 6px;
     transition: 0.3s;
 }
 
 nav ul li a:hover {
     background-color: var(--main-color);
-    color: var(--bg-color);
-    border-radius: 4px;
+    color: #000;
 }
 
-/* ================= SEARCH BOX ================= */
+/* ================= SEARCH ================= */
 .search-box {
     display: flex;
-    width: 100%;
     gap: 10px;
+    width: 100%;
 }
 
 .input-container {
@@ -82,10 +92,9 @@ nav ul li a:hover {
 
 .input-container input {
     width: 100%;
-    padding: 8px 150px 8px 12px;
-    border: 1px solid #ccc;
+    padding: 10px 120px 10px 12px;
     border-radius: 20px;
-    font-size: 1em;
+    border: 1px solid #ccc;
 }
 
 .input-container .buttons {
@@ -98,399 +107,211 @@ nav ul li a:hover {
 }
 
 .input-container .buttons button {
-    padding: 4px 8px;
-    font-size: 0.9em;
+    padding: 6px 10px;
     border-radius: 8px;
-    background-color: var(--main-color);
-    color: rgb(5,5,5);
+    background: var(--main-color);
     border: none;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.input-container .buttons button:hover {
-    background-color: #7e807d;
-}
-
-/* ================= HERO FULLSCREEN ================= */
+/* ================= HERO ================= */
 .hero-fullscreen {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-left: 100px;
+    padding: 40px;
     background-image:
-        linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0)),
+        linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)),
         url("principal.jpg");
     background-size: cover;
-    background-position: center;
-    overflow: hidden;
-}
-
-.hero-fullscreen::before {
-    content: "";
-    position: absolute;
-    top:0; left:0;
-    width:100%;
-    height:100%;
-    background-color: rgba(0,0,0,0.4);
-    z-index:1;
 }
 
 .hero-content-left {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.text-box {
-    padding: 20px 30px;
-    background-color: rgba(0,0,0,0.3);
-    max-width: 700px;
-    transition: all 0.4s ease;
-}
-
-.text-box:hover {
-    background-color: rgba(0,0,0,0.5);
-    transform: scale(1.05);
-    border-color: var(--main-color);
-}
-
-.text-box h1 {
-    font-size: 3em;
-    color: #fff;
-    margin: 0;
-    text-transform: uppercase;
-    transition: color 0.4s ease;
-}
-
-.text-box h2 {
-    font-size: 1.5em;
-    color: #fff;
-    margin: 0;
-    transition: color 0.4s ease;
-}
-
-.text-box:hover h1,
-.text-box:hover h2 {
-    color: #ffe600;
-}
-
-/* Caixa p da página Sobre */
-.about-text-box {
-    max-width: 1100px;
-    padding: 25px 35px;
-    background-color: rgba(0,0,0,0.3);
-    border-radius: 10px;
-    transition: all 0.4s ease;
-}
-
-.about-text-box p {
-    font-size: 1em;
-    color: #fff;
-    margin: 0;
-}
-
-.about-text-box:hover {
-    background-color: rgba(0,0,0,0.5);
-    transform: scale(1.02);
-}
-
-/* ================= SOCIAL SIDEBAR ================= */
-.social-sidebar {
-    position: absolute;
-    left: 20px;
-    top: 60%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 2;
-    border-left: 2px solid #fff;
-    padding-left: 15px;
-}
-
-.social-icon {
-    color: #fff;
-    font-size: 2em;
-    text-decoration: none;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.social-icon:hover {
-    transform: scale(1.2);
-    color: #ffe600;
-}
-
-/* ================= TEAM TILES ================= */
-#main-content {
-    position: relative;
-    z-index: 2;
-    margin-top: -180px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-}
-
-.team-card {
-    background: transparent;
-    padding: 0;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.team-card:hover {
-    transform: translateY(-5px);
-}
-
-/* ================= AVATAR SEM FUNDO ================= */
-.team-card .avatar {
-    width: 90px;
-    height: 90px;
-    margin: 0 auto 15px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-}
-
-.team-card .avatar i {
-    font-size: 20px;
-    color: #fff;
-}
-
-.team-cards h1 {
-    
-    margin: 60px 0 2px;
-    color: #fff;
-}
-
-.team-card .cargo {
-    display: block;
-    font-size: 0.85em;
-    color: #ffe600;
-    margin-bottom: 5px;
-}
-
-.team-card p {
-    display: none;
-}
-
-/* ================= FORMULÁRIO DE CONTATO ================= */
-.contact-container {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    background-color: rgba(0,0,0,0.3);
-    padding: 30px 40px;
-    border-radius: 10px;
-}
-
-.contact-title {
-    flex: 1;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.contact-title h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-.contact-title p {
-    font-size: 1em;
-    line-height: 1.5em;
-}
-
-.contact-form {
-    flex: 2;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
+.text-box {
+    padding: 20px;
+    background: rgba(0,0,0,0.4);
+    border-radius: var(--radius);
+    max-width: 600px;
+    transition: 0.3s;
+}
+
+.text-box:hover {
+    transform: scale(1.03);
+}
+
+.text-box h1 {
+    font-size: 2.5em;
+    color: #fff;
+}
+
+.text-box h2 {
+    font-size: 1.2em;
+    color: #ddd;
+}
+
+/* ================= SOCIAL ================= */
+.social-sidebar {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 1.8em;
+}
+
+/* ================= CARDS ================= */
+#main-content {
+    margin-top: -120px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.team-card {
+    text-align: center;
+}
+
+.team-card .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.team-card .cargo {
+    color: #ffe600;
+    font-size: 0.9em;
+}
+
+/* ================= CONTATO ================= */
+.contact-container {
+    display: flex;
+    gap: 40px;
+    padding: 30px;
+    border-radius: var(--radius);
+    background: rgba(0,0,0,0.3);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .contact-form input,
 .contact-form textarea {
-    width: 100%;
-    padding: 15px 20px;
-    border-radius: 10px;
+    padding: 12px;
+    border-radius: var(--radius);
     border: 1px solid #ccc;
-    font-size: 1.1em;
-    font-family: 'Montserrat', sans-serif;
-    resize: vertical;
-}
-
-.contact-form textarea {
-    min-height: 150px;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--main-color);
-    box-shadow: 0 0 8px rgba(24,181,202,0.5);
 }
 
 .contact-form button {
-    padding: 15px;
-    border-radius: 10px;
+    padding: 12px;
+    border-radius: var(--radius);
+    background: var(--main-color);
     border: none;
-    background-color: var(--main-color);
-    color: #000;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 1.1em;
 }
 
-.contact-form button:hover {
-    background-color: #ffe600;
-}
-
+/* ================= RESULTADOS ================= */
 .results-container {
-    position: absolute;
-    right: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 600px;
-    max-height: 70vh;
-    overflow-y: auto;
-    
-
-    
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    z-index: 3;
+    max-width: 600px;
+    margin: 0 auto;
 }
-
 
 .result-card {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 30px; 
-    background-color: #fff;
-    border-radius: 15px;
-    overflow: hidden; /* IMPORTANTE para a imagem */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-
-    transition: transform 0.3s, box-shadow 0.3s;
-    
-}
-
-.result-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 20px;
 }
 
 .result-card img {
-    width: 600px;
+    width: 100%;
     height: 150px;
     object-fit: cover;
-    border-radius: 10px;
 }
 
-.result-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.result-info h3 {
-    margin: 0;
-    color: #18b5ca;
-}
-
-.result-info p {
-    margin: 5px 0;
-    color: #333;
-}
-
-.result-type {
-    font-size: 0.85em;
-    font-weight: bold;
-    color: #ffe600;
-}
 
 /* ================= FOOTER ================= */
 footer {
-    background-color: #2c2c2c;
+    background: #2c2c2c;
     color: #fff;
-    padding: 40px 20px;
-    font-family: 'Montserrat', sans-serif;
+    padding: 30px;
 }
 
 footer .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     gap: 20px;
 }
 
-footer section {
-    flex: 1;
-    min-width: 200px;
-}
-
-footer section span {
-    display: block;
-    font-weight: 700;
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #557c3e;
-    padding-bottom: 5px;
-}
-
-footer section p, footer section br {
-    font-weight: 400;
-    line-height: 1.5em;
-    margin-bottom: 10px;
-}
-
-footer .text-center {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 0.9em;
-    color: #ccc;
-    border-top: 1px solid #333;
-    padding-top: 20px;
-}
-
 /* ================= RESPONSIVO ================= */
-@media (max-width: 768px) {
-    nav { flex-direction: column; align-items: flex-start; }
-    nav ul { flex-direction: column; width: 100%; }
-    .search-box { width: 100%; flex-direction: column; }
-    .search-box input, .search-box button { width: 100%; }
-    .hero-fullscreen { flex-direction: column; align-items: center; padding-left: 0; text-align: center; }
-    .social-sidebar { position: static; transform: none; flex-direction: row; gap: 15px; margin-bottom: 20px; border-left: none; padding-left: 0; }
-    .hero-content-left { align-items: center; gap: 20px; }
-    .text-box h1 { font-size: 2em; }
-    .text-box h2 { font-size: 1.2em; }
-    .social-icon { width: 40px; height: 40px; font-size: 1.5em; }
-    #main-content { margin-top: -60px; }
-    footer .row { flex-direction: column; align-items: flex-start; }
-    hr.visible-xs { display: block; width: 100%; border: 1px solid #555; margin: 15px 0; }
 
-    .contact-container {
+/* TABLET */
+@media (max-width: 768px) {
+
+    header {
         flex-direction: column;
-        gap: 20px;
+        gap: 10px;
         padding: 20px;
     }
 
-    .contact-title h1 {
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-fullscreen {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .text-box h1 {
         font-size: 2em;
     }
 
-    .contact-title p {
-        text-align: center;
+    .contact-container {
+        flex-direction: column;
+    }
+
+    #main-content {
+        margin-top: -60px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+
+    header {
+        padding: 15px;
+    }
+
+    .text-box h1 {
+        font-size: 1.6em;
+    }
+
+    .text-box h2 {
+        font-size: 1em;
+    }
+
+    .input-container input {
+        padding: 10px;
+    }
+
+    .social-sidebar {
+        position: static;
+        transform: none;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
     }
 }
