@@ -1,4 +1,4 @@
-import bg from "./assets/bg.jpg";
+/*import bg from "./assets/bg.jpg";
 import {
   GeoAltFill,
   PlusSquare,
@@ -48,7 +48,7 @@ import {
 */
 
 /**23/04/2026 22:52 */
-
+/*
 function Home() {
   return (
     <div className="content">
@@ -87,3 +87,34 @@ export default function Home() {
     </div>
   );
 }*/
+
+import "./home.css";
+import cone from "./assets/bg.jpg";
+
+
+export default function Home() {
+  return (
+    <div className="home-container">
+
+      {/* CONTEÚDO CENTRAL */}
+      <div className="home-content">
+
+        {/* ILUSTRAÇÃO */}
+        <div className="home-illustration">
+          <img src={cone} alt="Sem percursos" />
+        </div>
+
+        {/* TEXTO */}
+        <h2 className="home-title">
+          Você não tem nenhum percurso ativo
+        </h2>
+
+        <p className="home-subtitle">
+          Ao iniciar um novo percurso, você verá as informações aqui.
+        </p>
+
+      </div>
+
+    </div>
+  );
+}
