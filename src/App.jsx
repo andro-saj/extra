@@ -1,9 +1,11 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import Home from "./home";
 import Disponiveis from "./disponiveis";
-import Confirmados from "./confirmados"; // 🔥 IMPORTANTE
+import Confirmados from "./confirmados";
 import Mais from "./mais";
+import Bloqueio from "./Bloqueio";
+
+import { temAcesso } from "./auth";
 
 import {
   GeoAltFill,
@@ -14,19 +16,27 @@ import {
 
 export default function App() {
   const [tela, setTela] = useState("ativo");
+  const [liberado, setLiberado] = useState(true);
+
+  useEffect(() => {
+    setLiberado(temAcesso());
+  }, []);
+
+  // 🔒 BLOQUEIO
+  if (!liberado) {
+    return <Bloqueio liberar={() => setLiberado(true)} />;
+  }
 
   return (
     <div className="app-container">
 
-      {/* CONTEÚDO */}
       <div className="screen">
         {tela === "ativo" && <Home />}
         {tela === "disponiveis" && <Disponiveis />}
-        {tela === "confirmados" && <Confirmados />} {/* 🔥 FALTAVA ISSO */}
+        {tela === "confirmados" && <Confirmados />}
         {tela === "mais" && <Mais />}
       </div>
 
-      {/* NAV GLOBAL */}
       <div className="bottom-nav">
 
         <div
