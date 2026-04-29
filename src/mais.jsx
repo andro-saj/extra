@@ -39,12 +39,18 @@ export default function Mais() {
     { label: "Excluir minha conta", icon: Trash, danger: true },
   ];
 
+  // 🔹 TELA IDENTIFICAÇÃO
   if (tela === "identificacao") {
-    return <Identificacao onVoltar={() => setTela("menu")} />;
+    return (
+      <div className="screen">
+        <Identificacao onVoltar={() => setTela("menu")} />
+      </div>
+    );
   }
 
+  // 🔹 MENU PRINCIPAL
   return (
-    <div className="app">
+    <div className="screen">
 
       {/* HEADER */}
       <div className="header">
